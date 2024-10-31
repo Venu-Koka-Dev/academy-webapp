@@ -440,8 +440,7 @@ const NavbarWithSearch = () => {
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                     </svg>              
                   </button>
-                  {showAllCategoriesDD && (
-                        {/* <!-- Mega Menu --> */}
+                  {showAllCategoriesDD && (                        
                         <div className="z-50 hidden w-[672px] mx-auto overflow-hidden antialiased bg-white rounded-lg shadow-lg dark:bg-gray-700">
                             <div className="sm:flex sm:items-stretch">
                               <div className="w-full px-2 py-4 space-y-4 sm:max-w-sm md:max-w-md sm:p-6 shrink-0">
