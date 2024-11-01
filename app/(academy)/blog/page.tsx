@@ -1,8 +1,11 @@
+import Blogs from '@/app/(academy)/blog/_components/Blogs';
 import React from 'react'
 
 const BlogPage = () => {
   return (
-    <div>BlogPage</div>
+    <div>
+      <Blogs />
+    </div>
   )
 }
 
