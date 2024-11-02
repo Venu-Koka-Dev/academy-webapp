@@ -23,14 +23,16 @@ export default function RootLayout({
       <head>
         <ThemeModeScript />
       </head>
-      <body className={inter.className}>    
-        <div className="w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-800">
-          <NavbarWithSearch />
-        </div>
-        <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-900">
-          {children}          
-        </div>   
-        <Footer />         
+      <body className={inter.className}>
+        <div className="bg-white dark:bg-gray-900">           
+          <div className="w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-800">
+            <NavbarWithSearch />
+          </div>
+          <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-900">
+            {children}          
+          </div>   
+          <Footer /> 
+        </div>           
       </body>      
     </html>
   );

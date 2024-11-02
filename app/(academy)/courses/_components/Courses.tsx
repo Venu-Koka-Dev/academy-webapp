@@ -54,7 +54,7 @@ const Courses = () => {
   });
 
   return (
-    <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-12">
+    <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-12 mt-16">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <div className="mb-4 items-end justify-between sm:flex gap-4 md:mb-8">
             <div className="mb-4 sm:mb-0 border-l-[5px] border-blue-700 pl-5">              

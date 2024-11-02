@@ -29,7 +29,7 @@ const NavbarWithSearch = () => {
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div className="flex flex-wrap items-center justify-between gap-4 lg:flex-nowrap">
               <div className="lg:order-1 shrink-0">
-                <Link href="#" title="" className="">
+                <Link href="/" title="" className="">
                   <img className="block w-auto h-8 dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full.svg" alt=""/>
                   <img className="hidden w-auto h-8 dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full-dark.svg" alt=""/>
                 </Link>

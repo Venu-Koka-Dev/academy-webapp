@@ -3,54 +3,38 @@ import React from 'react'
 
 const ContactForm = () => {
   return (
-    <section className="bg-white dark:bg-gray-900 pb-16">
+    <section className="bg-white dark:bg-gray-900 pb-16 mt-20">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">            
             <div className="grid gap-16 lg:grid-cols-3">
                 <div className="hidden lg:block">
                     <h3 className="mb-4 text-md font-semibold text-gray-900 dark:text-white">Points of contact</h3>
-                    <h4 className="mb-1 text-sm font-medium text-gray-900 dark:text-white">U.S. Flowbite</h4>
+                    <h4 className="mb-1 text-sm font-medium text-gray-900 dark:text-white">Sifting Bytes Technologies LLP</h4>
                     <address className="text-sm font-normal text-gray-500 non-italic">
-                        11350 McCormick Rd, EP III, Suite 200,
-                        <br/>Hunt Valley, MD 21031
+                        Sri Nilayam Building, Second Floor, Kondapur
+                        <br/>Hyderabad, Telangana 500084
                     </address>
                     <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">Information & Sales</h4>
-                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">sales@flowbite.com</Link></p>
+                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">sales@siftingbytes.com</Link></p>
                     <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">Support</h4>
-                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">support@flowbite.com</Link></p>
+                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">support@siftingbytes.com</Link></p>
                     <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">Verification of Employment</h4>
-                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">hr@flowbite.com</Link></p>
-                    <h3 className="mt-5 mb-4 text-md font-semibold text-gray-900 dark:text-white">Our offices around the world</h3>
-                    <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">Canada</h4>
-                    <address className="text-sm font-normal text-gray-500 non-italic">
-                        5333 Avenue Casgrain #1201,
-                        <br/>Montréal, QC H2T 1X3
-                    </address>
-                    <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">Germany</h4>
-                    <address className="text-sm font-normal text-gray-500 non-italic">
-                        Neue Schönhauser Str. 3-5,
-                        <br/>10178 Berlin
-                    </address>
-                    <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">France</h4>
-                    <address className="text-sm font-normal text-gray-500 non-italic">
-                        266 Place Ernest Granier,
-                        <br/>34000 Montpellier
-                    </address>
+                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">hr@siftingbytes.com</Link></p>
+                    <h4 className="mt-4 mb-1 font-medium text-gray-900 dark:text-white">Trainings & Admissions</h4>
+                    <p className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"><Link href="#">admin@siftingbytes.com</Link></p>                    
                 </div>
                 <div className="col-span-2">
                     <h2 className="mb-4 text-md tracking-tight font-extrabold text-gray-900 lg:mb-8 md:text-xl dark:text-white">How can we help you?</h2>
                     <form action="#" className="space-y-8">
                         <div>
                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email address <span className="text-xs text-gray-500">(So we can reply to you)</span></label>
-                            <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required/>
+                            <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@gmail.com" required/>
                         </div>
                         <div>
                             <label htmlFor="topic" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Topic</label>
                             <select id="topic" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Select a topic</option>
-                                <option value="US">Switch plans and add-ons</option>
-                                <option value="CA">Billing & Invoice</option>
-                                <option value="FR">I can't log in to Flowbite</option>
-                                <option value="DE">Parental controls</option>
+                                <option value="TA">Trainings & Admissions</option>
+                                <option value="DQ">Doubts & Queries</option>                                
                             </select>
                         </div>
                         <div>
