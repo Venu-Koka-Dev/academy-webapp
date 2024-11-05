@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
 import "../globals.css";
-import MyNavbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import NavbarWithSearch from "@/components/NavbarWithSearch";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +22,10 @@ export default function RootLayout({
       <head>
         <ThemeModeScript />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} dark:bg-gray-900`}>   
         <div className="bg-white dark:bg-gray-900">           
           <div className="w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-800">
-            <NavbarWithSearch />
+            <Navbar />
           </div>
           <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-900">
             {children}          

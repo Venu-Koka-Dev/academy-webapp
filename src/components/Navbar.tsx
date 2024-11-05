@@ -1,16 +1,70 @@
-import React from 'react';
+"use client";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
+import ModeButton from './ModeButton';
+import MyAccount from './MyAccount';
+import ScreenSizeModeButton from './ScreenSizeModeButton';
 
-type SearchModalPropType = {
-    showSearchModal: boolean;
-    setShowSearchModal: () => {};
-}
+const links = [
+  { href: '/about', label: 'About' },
+  { href: '/courses', label: 'Courses' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
 
-const SearchModal = ({ showSearchModal, setShowSearchModal}: SearchModalPropType) => {
+
+const Navbar = () => {
+  const [showSearchModal, setShowSearchModal] = useState(false);
+  const pathname = usePathname(); 
+
+  const handleSearchBtn = () => {
+    setShowSearchModal(prevState => !prevState);
+  }
+
   return (
     <>
+        <nav className="sticky top-0 py-4 bg-white dark:bg-gray-800 antialiased">
+          <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+            <div className="flex flex-wrap items-center justify-between gap-4 lg:flex-nowrap">
+              <div className="lg:order-1 shrink-0">
+                <Link href="/" title="" className="">
+                  <img className="block w-auto h-8 dark:hidden" src="/logo-light.svg" alt=""/>
+                  <img className="hidden w-auto h-8 dark:block" src="/logo-dark.svg" alt=""/>
+                </Link>
+              </div>        
+              <div className="flex items-center justify-end lg:space-x-2 lg:order-3">
+                <div className="relative">
+                  <button type="button" className="inline-flex items-center justify-center hover:bg-gray-100 rounded-md text-gray-900 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white p-2" onClick={handleSearchBtn}>
+                    <span className="sr-only">Search</span>
+                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                    </svg>
+                  </button>
+                </div>       
+                <ModeButton />                  
+                <ScreenSizeModeButton />      
+                <MyAccount />
+              </div>        
+              <div className="w-full md:flex md:items-center md:justify-center lg:order-2">
+                <div className="sm:flex relative items-center justify-center sm:gap-4 sm:p-2 sm:bg-gray-100 rounded-lg sm:dark:bg-gray-700">         
+                  <ul className="flex items-center space-x-4">
+                    {links.map((link, index) => (
+                     <li key={index}>
+                       <Link href={link.href} title={link.label} className={`items-center hidden gap-2 px-2 py-1 text-xs ${pathname === link.href ? "md:text-blue-700 font-bold" : ""} hover:text-primary-700 dark:hover:text-primary-500  text-gray-900 rounded-lg sm:inline-flex dark:text-white`}>
+                         {link.label}
+                       </Link>
+                     </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>  
         {showSearchModal && (   
           <div className="absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-65 flex items-center justify-center z-50 ">     
-            <div id="ecommerce-search-modal" tabIndex={-1} aria-hidden="true" className="overflow-y-auto overflow-x-hidden p-12 w-full md:w-1/2 xl:w-1/3 relative top-0 right-0 left-200 z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full antialiased">
+            <div tabIndex={-1} aria-hidden="true" className="overflow-y-auto overflow-x-hidden p-12 w-full md:w-1/2 xl:w-1/2 relative  z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full antialiased">
                 <div className="relative p-4 w-full max-w-2xl max-h-full">
                 {/* <!-- Modal content --> */}
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-800 p-3 sm:p-5">        
@@ -266,9 +320,9 @@ const SearchModal = ({ showSearchModal, setShowSearchModal}: SearchModalPropType
                 </div>
             </div>
           </div>
-        )}
+        )}     
     </>
   )
 }
 
-export default SearchModal
+export default Navbar;
