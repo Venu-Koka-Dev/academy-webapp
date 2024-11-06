@@ -1,116 +1,152 @@
-import { Body, Button, Container, Head, Html, Img, Link, Preview, Section, Text,} from "@react-email/components";
+import { Body, Button, Container, Head, Hr, Html, Img, Link, Preview, Row, Section, Text,} from "@react-email/components";
 import * as React from "react";
-  
-interface GithubAccessTokenEmailProps {
-    username?: string;
+
+interface AirbnbReviewEmailProps {
+  academyLogo?: string;
+  authorName?: string;
+  authorImage?: string;
+  reviewText?: string;
 }
-  
-const baseUrl = 'https://demo.react.email';
 
-export const GithubAccessTokenEmail = ({
-  username,
-}: GithubAccessTokenEmailProps) => (
-  <Html>
-    <Head />
-    <Preview>
-      A fine-grained personal access token has been added to your account
-    </Preview>
-    <Body style={main}>
-      <Container style={container}>
-        <Img
-          src={`${baseUrl}/static/github.png`}
-          width="32"
-          height="32"
-          alt="Github"
-        />
+const baseUrl = "https://demo.react.email/";
 
-        <Text style={title}>
-          <strong>@{username}</strong>, a personal access was created on your
-          account.
-        </Text>
+export const AirbnbReviewEmail = ({
+  academyLogo,
+  authorName,
+  authorImage,
+  reviewText,
+}: AirbnbReviewEmailProps) => {
+  const previewText = `Read ${authorName}'s review`;
 
-        <Section style={section}>
-          <Text style={text}>
-            Hey <strong>{username}</strong>!
-          </Text>
-          <Text style={text}>
-            A fine-grained personal access token (<Link>resend</Link>) was
-            recently added to your account.
-          </Text>
+  return (
+    <Html>
+      <Head />
+      <Preview>{previewText}</Preview>
 
-          <Button style={button}>View your token</Button>
-        </Section>
-        <Text style={links}>
-          <Link style={link}>Your security audit log</Link> ・{" "}
-          <Link style={link}>Contact support</Link>
-        </Text>
+      <Body style={main}>
+        <Container style={container}>
+          <Section>
+            <Img src={academyLogo} width="96" height="30" alt="Sifting Bytes"/>
+          </Section>
+          <Section>
+            <Img
+              src={authorImage}
+              width="96"
+              height="96"
+              alt={authorName}
+              style={userImage}
+            />
+          </Section>
+          <Section style={{ paddingBottom: "20px" }}>
+            <Row>
+              <Text style={heading}>Here's what {authorName} wrote</Text>
+              <Text style={review}>{reviewText}</Text>
+              <Text style={paragraph}>
+                Now that the review period is over, we’ve posted {authorName}
+                ’s review to your Airbnb profile.
+              </Text>
+              <Text style={{ ...paragraph, paddingBottom: "16px" }}>
+                While it’s too late to write a review of your own, you can send
+                your feedback to {authorName} using your Airbnb message thread.
+              </Text>
 
-        <Text style={footer}>
-          GitHub, Inc. ・88 Colin P Kelly Jr Street ・San Francisco, CA 94107
-        </Text>
-      </Container>
-    </Body>
-  </Html>
-);
+              <Button style={button} href="https://airbnb.com/">
+                Send My Feedback
+              </Button>
+            </Row>
+          </Section>
 
-GithubAccessTokenEmail.PreviewProps = {
-  username: "alanturing",
-} as GithubAccessTokenEmailProps;
+          <Hr style={hr} />     
+             
+        </Container>
+      </Body>
+    </Html>
+  );
+};
 
-export default GithubAccessTokenEmail;
+AirbnbReviewEmail.PreviewProps = {
+  academyLogo: `${baseUrl}/static/airbnb-review-user.jpg`,
+  authorName: "Alex",
+  authorImage: `${baseUrl}/static/airbnb-review-user.jpg`,
+  reviewText: `“Alan was a great guest! Easy communication, the apartment was left
+    in great condition, very polite, and respectful of all house rules.
+    He’s welcome back anytime and would easily recommend him to any
+    host!”`,
+} as AirbnbReviewEmailProps;
+
+export default AirbnbReviewEmail;
 
 const main = {
   backgroundColor: "#ffffff",
-  color: "#24292e",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 };
 
 const container = {
-  maxWidth: "480px",
   margin: "0 auto",
   padding: "20px 0 48px",
+  width: "580px",
+  maxWidth: "100%",
 };
 
-const title = {
-  fontSize: "24px",
-  lineHeight: 1.25,
+const userImage = {
+  margin: "0 auto",
+  marginBottom: "16px",
+  borderRadius: "50%",
 };
 
-const section = {
+const heading = {
+  fontSize: "32px",
+  lineHeight: "1.3",
+  fontWeight: "700",
+  color: "#484848",
+};
+
+const paragraph = {
+  fontSize: "18px",
+  lineHeight: "1.4",
+  color: "#484848",
+};
+
+const review = {
+  ...paragraph,
   padding: "24px",
-  border: "solid 1px #dedede",
-  borderRadius: "5px",
-  textAlign: "center" as const,
-};
-
-const text = {
-  margin: "0 0 10px 0",
-  textAlign: "left" as const,
+  backgroundColor: "#f2f3f3",
+  borderRadius: "4px",
 };
 
 const button = {
-  fontSize: "14px",
-  backgroundColor: "#28a745",
+  backgroundColor: "#ff5a5f",
+  borderRadius: "3px",
   color: "#fff",
-  lineHeight: 1.5,
-  borderRadius: "0.5em",
-  padding: "12px 24px",
-};
-
-const links = {
+  fontSize: "18px",
+  paddingTop: "19px",
+  paddingBottom: "19px",
+  textDecoration: "none",
   textAlign: "center" as const,
+  display: "block",
+  width: "100%",
 };
 
 const link = {
-  color: "#0366d6",
-  fontSize: "12px",
+  ...paragraph,
+  color: "#ff5a5f",
+  display: "block",
+};
+
+const reportLink = {
+  fontSize: "14px",
+  color: "#9ca299",
+  textDecoration: "underline",
+};
+
+const hr = {
+  borderColor: "#cccccc",
+  margin: "20px 0",
 };
 
 const footer = {
-  color: "#6a737d",
-  fontSize: "12px",
-  textAlign: "center" as const,
-  marginTop: "60px",
+  color: "#9ca299",
+  fontSize: "14px",
+  marginBottom: "10px",
 };
-  

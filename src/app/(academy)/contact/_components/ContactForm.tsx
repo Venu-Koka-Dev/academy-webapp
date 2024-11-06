@@ -1,28 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
-import { Resend } from 'resend';
-import GithubAccessTokenEmail from "@/components/EmailTemplate";
+import { send } from "@/lib/actions/email-action";
 
 const ContactForm = () => {
-
-  // Server action  
-  const send = async (formData: FormData) => {
-    "use server";    
-    //console.log(formData.get("email"));
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    try {
-        const { data } = await resend.emails.send({
-            from: 'onboarding@resend.dev',
-            to: 'venu.kokaz@gmail.com',
-            subject: formData.get("subject") as string,
-            react: GithubAccessTokenEmail({ username: "venu212" }),
-        });   
-        console.log("Sent email");                        
-    } catch (error) {     
-        console.log(error);   
-    }
-  }
-
   return (
     <section className="bg-white dark:bg-gray-900 pb-16 mt-20">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">            
@@ -48,15 +28,14 @@ const ContactForm = () => {
                     <form action={send} className="space-y-8">
                         <div>   
                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email address <span className="text-xs text-gray-500">(So we can reply to you)</span></label>
-                            <input type="email" name="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@gmail.com" required/>
+                            <input type="email" name="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@gmail.com" required/>                            
                         </div>
                         <div>
                             <label htmlFor="topic" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Topic</label>
                             <select name="topic" id="topic" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>Select a topic</option>
-                                <option value="TA">Trainings & Admissions</option>
+                                <option selected value="TA">Trainings & Admissions</option>
                                 <option value="DQ">Doubts & Queries</option>                                
-                            </select>
+                            </select>                            
                         </div>
                         <div>
                             <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
@@ -64,7 +43,7 @@ const ContactForm = () => {
                         </div>
                         <div className="sm:col-span-2">
                             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                            <textarea name="message" id="message" rows={6} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
+                            <textarea name="message" id="message" rows={6} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..." required></textarea>
                             <div className="flex mt-4">
                                 <input id="default-checkbox" type="checkbox" value="" className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                 <label htmlFor="default-checkbox" className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">By submitting this form, you confirm that you have read and agree to our <Link className="font-normal text-gray-900 underline hover:no-underline dark:text-white" href="#">Terms of Service</Link> and <Link className="font-normal text-gray-900 underline hover:no-underline dark:text-white" href="#">Privacy Statement</Link>.</label>
