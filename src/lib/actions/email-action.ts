@@ -4,6 +4,7 @@ import AirbnbReviewEmail from "@/components/EmailTemplate";
 
 // For send email using Contact form  
 export const send = async (formData: FormData) => {   
+    // Server side validation - using Zod
     console.log(formData.get("email"));
     console.log(formData.get("topic"));
     console.log(formData.get("subject"));
