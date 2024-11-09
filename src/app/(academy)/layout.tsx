@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
 import "../globals.css";
+import { Toaster } from 'react-hot-toast';
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
             <Navbar />
           </div>
           <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 dark:bg-gray-900">
+            <Toaster />
             {children}          
           </div>   
           <Footer /> 

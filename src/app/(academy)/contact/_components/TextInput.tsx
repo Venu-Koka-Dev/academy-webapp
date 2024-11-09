@@ -23,7 +23,11 @@ const TextInput = ({ id, name, placeholder, label}: TextInputProps) => {
         if(value.length > 0 && value.length < 25) {
             setError("Input must be at least 25 characters long");
         } else {
+          if (value.length > 100) {
+            setError("Input must be lesser than 100 characters long");
+          } else {
             setError(null);
+          }
         }
         setIsTyping(false);
     }, 500);

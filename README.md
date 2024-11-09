@@ -8,6 +8,7 @@
 7. Resend - a SaaS based Email service provider
 8. React-Emails - a template library to send custom emails
 9. Zod - for server side form validation
+10. React Hot Toast - to show messages
 
 
 # Setup
@@ -33,3 +34,6 @@ git push -u origin main --force
 
 npm i resend
 npm i @react-email/components
+
+
+npm install react-hot-toast

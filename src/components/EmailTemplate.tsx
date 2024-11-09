@@ -6,58 +6,41 @@ interface AirbnbReviewEmailProps {
   authorName?: string;
   authorImage?: string;
   reviewText?: string;
+  messageText?: string;
 }
 
 const baseUrl = "https://demo.react.email/";
 
-export const AirbnbReviewEmail = ({
-  academyLogo,
-  authorName,
-  authorImage,
-  reviewText,
-}: AirbnbReviewEmailProps) => {
+export const AirbnbReviewEmail = ({ academyLogo, authorName, authorImage, reviewText, messageText}: AirbnbReviewEmailProps) => {
   const previewText = `Read ${authorName}'s review`;
 
   return (
     <Html>
       <Head />
       <Preview>{previewText}</Preview>
-
       <Body style={main}>
         <Container style={container}>
           <Section>
             <Img src={academyLogo} width="96" height="30" alt="Sifting Bytes"/>
           </Section>
           <Section>
-            <Img
-              src={authorImage}
-              width="96"
-              height="96"
-              alt={authorName}
-              style={userImage}
-            />
+            <Img src={authorImage} width="96" height="96" alt={authorName} style={userImage}/>
           </Section>
           <Section style={{ paddingBottom: "20px" }}>
             <Row>
               <Text style={heading}>Here's what {authorName} wrote</Text>
               <Text style={review}>{reviewText}</Text>
-              <Text style={paragraph}>
-                Now that the review period is over, we’ve posted {authorName}
-                ’s review to your Airbnb profile.
-              </Text>
-              <Text style={{ ...paragraph, paddingBottom: "16px" }}>
+              <Text style={paragraph}>{messageText}</Text>
+              {/* <Text style={{ ...paragraph, paddingBottom: "16px" }}>
                 While it’s too late to write a review of your own, you can send
                 your feedback to {authorName} using your Airbnb message thread.
-              </Text>
-
-              <Button style={button} href="https://airbnb.com/">
+              </Text> */}
+              {/* <Button style={button} href="https://airbnb.com/">
                 Send My Feedback
-              </Button>
+              </Button> */}
             </Row>
           </Section>
-
-          <Hr style={hr} />     
-             
+          <Hr style={hr} />               
         </Container>
       </Body>
     </Html>
@@ -72,6 +55,8 @@ AirbnbReviewEmail.PreviewProps = {
     in great condition, very polite, and respectful of all house rules.
     He’s welcome back anytime and would easily recommend him to any
     host!”`,
+  messageText: `“Alan was a great guest! Easy communication, the apartment was left
+    in great condition, very polite, and respectful”`,
 } as AirbnbReviewEmailProps;
 
 export default AirbnbReviewEmail;
