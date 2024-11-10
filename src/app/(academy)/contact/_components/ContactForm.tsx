@@ -1,13 +1,13 @@
 "use client";
 import Link from 'next/link';
-import React, { useActionState } from 'react';
+import React, { useState } from 'react';
 import { send } from "@/lib/actions/email-action";
 import TextInput from './TextInput';
 import toast from 'react-hot-toast';
 import SendButton from './SendButton';
 
 const ContactForm = () => {
-  const [state, formAction] = useActionState();
+  const [state, formAction] = useActionState(send, { success: false, error: false });  // { success: true, data: "" }
 
   const showToast = () => {
     toast.success('This is a success message!', {
@@ -38,7 +38,17 @@ const ContactForm = () => {
                 </div>
                 <div className="col-span-2">
                     <h2 className="mb-4 text-md tracking-tight font-extrabold text-gray-900 lg:mb-8 md:text-xl dark:text-white">How can we help you?</h2>
-                    <form action={send} className="space-y-8">
+                    {state.success && (
+                        <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                           <span className="font-medium">Success alert!</span> Email sent!
+                        </div>
+                    )}
+                    {state.error && (
+                        <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                          <span className="font-medium">Danger alert!</span> Something went wrong!
+                        </div>
+                    )}
+                    <form action={(formData) => formAction(formData)} className="space-y-8">
                         <div>   
                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email address <span className="text-xs text-gray-500">(So we can reply to you)</span></label>
                             <input type="email" name="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@gmail.com" required/>                            
